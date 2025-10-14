@@ -35,7 +35,7 @@ export default async function Home() {
               ) : (
                 <div className="bg-gray-200 rounded mb-3 w-full h-[300px]" />
               )}
-              <h2 className="text-lg font-semibold">{p.titulo || "Sem título"}</h2>
+              <h2 className="text-lg font-semibold text-[#152020]">{p.titulo || "Sem título"}</h2>
             </div>
           ))}
         </div>
