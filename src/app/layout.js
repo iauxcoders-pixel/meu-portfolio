@@ -32,6 +32,17 @@ export default function RootLayout({ children }) {
           />
         </noscript>
         <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-1QTM69VDTQ"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="ga-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-1QTM69VDTQ');`,
+          }}
+        />
+        <Script
           id="gtm-init"
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
