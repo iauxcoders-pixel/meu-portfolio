@@ -2,6 +2,12 @@ import { supabase } from "@/lib/supabaseClient";
 import Image from "next/image";
 import HeroSection from "@/components/HeroSection";
 
+export const metadata = {
+  verification: {
+    google: "3ZGzAg49XVcR3_F9DqeIaYnj9eIZ42AhrysmxCQnMBQ",
+  },
+};
+
 export default async function Home() {
   const { data, error } = await supabase.from("projetos").select("*");
 
