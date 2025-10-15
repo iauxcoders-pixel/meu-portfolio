@@ -1,9 +1,53 @@
 "use client";
 import { useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
 import { FiArrowRight } from "react-icons/fi";
 
 export default function PaginaContacto() {
-  const [consent, setConsent] = useState(false);
+  const [nome, setNome] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
+  const [email, setEmail] = useState("");
+  const [servico, setServico] = useState("Design");
+  const [descricao, setDescricao] = useState("");
+  const [consentimento, setConsentimento] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    setLoading(true);
+    setSuccessMessage("");
+    setErrorMessage("");
+
+    const { error } = await supabase
+      .from("contatos")
+      .insert([
+        {
+          nome,
+          whatsapp,
+          email,
+          servico,
+          descricao,
+          consentimento,
+        },
+      ]);
+
+    if (error) {
+      setErrorMessage("Não foi possível enviar. Tente novamente.");
+      setLoading(false);
+      return;
+    }
+
+    setSuccessMessage("Mensagem enviada com sucesso! Em breve entraremos em contato.");
+    setNome("");
+    setWhatsapp("");
+    setEmail("");
+    setServico("Design");
+    setDescricao("");
+    setConsentimento(false);
+    setLoading(false);
+  }
   return (
     <main className="min-h-screen p-8">
       <div className="max-w-5xl mx-auto pt-[120px]">
@@ -102,29 +146,56 @@ export default function PaginaContacto() {
 
           {/* Coluna Direita: Formulário */}
           <div>
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               {/* Nome */}
               <div>
                 <label htmlFor="nome" className="block mb-2 text-sm font-medium">Nome</label>
-                <input id="nome" name="nome" type="text" className="w-full rounded-md border border-white/10 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <input
+                  id="nome"
+                  name="nome"
+                  type="text"
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
+                  className="w-full rounded-md border border-white/10 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
               </div>
 
               {/* WhatsApp */}
               <div>
                 <label htmlFor="whatsapp" className="block mb-2 text-sm font-medium">WhatsApp</label>
-                <input id="whatsapp" name="whatsapp" type="text" className="w-full rounded-md border border-white/10 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <input
+                  id="whatsapp"
+                  name="whatsapp"
+                  type="text"
+                  value={whatsapp}
+                  onChange={(e) => setWhatsapp(e.target.value)}
+                  className="w-full rounded-md border border-white/10 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
               </div>
 
               {/* Email */}
               <div>
                 <label htmlFor="email" className="block mb-2 text-sm font-medium">Email</label>
-                <input id="email" name="email" type="email" className="w-full rounded-md border border-white/10 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full rounded-md border border-white/10 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
               </div>
 
               {/* Serviço */}
               <div>
                 <label htmlFor="servico" className="block mb-2 text-sm font-medium">Serviço</label>
-              <select id="servico" name="servico" className="w-full rounded-md border border-white/10 bg-transparent text-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <select
+                id="servico"
+                name="servico"
+                value={servico}
+                onChange={(e) => setServico(e.target.value)}
+                className="w-full rounded-md border border-white/10 bg-transparent text-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
                 <option value="Design" style={{ backgroundColor: "#ffffff", color: "#152020" }}>Design</option>
                 <option value="Social Media" style={{ backgroundColor: "#ffffff", color: "#152020" }}>Social Media</option>
                 <option value="Vídeo Animado" style={{ backgroundColor: "#ffffff", color: "#152020" }}>Vídeo Animado</option>
@@ -137,7 +208,14 @@ export default function PaginaContacto() {
               {/* Descrição do Projeto */}
               <div>
                 <label htmlFor="descricao" className="block mb-2 text-sm font-medium">Descrição do Projeto</label>
-                <textarea id="descricao" name="descricao" rows={6} className="w-full rounded-md border border-white/10 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <textarea
+                  id="descricao"
+                  name="descricao"
+                  rows={6}
+                  value={descricao}
+                  onChange={(e) => setDescricao(e.target.value)}
+                  className="w-full rounded-md border border-white/10 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
               </div>
 
               {/* Consentimento */}
@@ -147,8 +225,8 @@ export default function PaginaContacto() {
                   name="consentimento"
                   type="checkbox"
                   className="mt-1 h-4 w-4"
-                  checked={consent}
-                  onChange={(e) => setConsent(e.target.checked)}
+                  checked={consentimento}
+                  onChange={(e) => setConsentimento(e.target.checked)}
                   required
                 />
                 <label htmlFor="consentimento" className="text-sm">
@@ -159,14 +237,24 @@ export default function PaginaContacto() {
               {/* Botão Submit */}
               <button
                 type="submit"
-                disabled={!consent}
-                className={`cta-button ${!consent ? "is-disabled" : ""}`}
+                disabled={!consentimento || loading}
+                className={`cta-button ${!consentimento || loading ? "is-disabled" : ""}`}
               >
-                <span className="cta-label">Enviar Mensagem</span>
+                <span className="cta-label">{loading ? "Enviando..." : "Enviar Mensagem"}</span>
                 <span className="cta-icon" aria-hidden="true">
                   <FiArrowRight size={18} />
                 </span>
               </button>
+
+              {/* Feedback Visual */}
+              <div className="min-h-[28px]">
+                {successMessage && (
+                  <p className="mt-2 text-sm text-green-500">{successMessage}</p>
+                )}
+                {errorMessage && (
+                  <p className="mt-2 text-sm text-red-500">{errorMessage}</p>
+                )}
+              </div>
             </form>
           </div>
         </div>
