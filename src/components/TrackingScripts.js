@@ -13,6 +13,25 @@ export default function TrackingScripts() {
     } catch (e) {
       setConsent(null);
     }
+
+    // Atualizar quando o modal de consentimento emitir o evento
+    function onConsentUpdate() {
+      try {
+        const v = localStorage.getItem("cookie_consent");
+        setConsent(v);
+      } catch {
+        // ignore
+      }
+    }
+    if (typeof window !== "undefined") {
+      window.addEventListener("cookie-consent", onConsentUpdate);
+    }
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("cookie-consent", onConsentUpdate);
+      }
+    };
   }, []);
 
   if (consent !== "aceito") return null;
