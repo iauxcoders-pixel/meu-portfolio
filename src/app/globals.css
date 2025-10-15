@@ -182,6 +182,17 @@ body {
   object-fit: contain;
 }
 
+/* Título de seção padronizado: centralizado, negrito e com espaçamento consistente */
+.section-title {
+  text-align: center;
+  font-weight: 700; /* equivalente a font-bold */
+  margin-top: 3rem; /* mt-12 */
+  margin-bottom: 1.5rem; /* mb-6 */
+  /* Tamanho responsivo: base 2xl com leve ganho em telas maiores */
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  letter-spacing: 0.01em;
+}
+
 @media (min-width: 640px) {
   .carousel-item {
     flex-basis: 50%;
