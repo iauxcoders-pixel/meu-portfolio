@@ -97,7 +97,7 @@ Em todas essas experiências, meu grande diferencial foi o suporte ao design vis
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [slides.length]);
 
   return (
     <main className="min-h-screen p-0">

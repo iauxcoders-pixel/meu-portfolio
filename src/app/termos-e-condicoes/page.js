@@ -36,7 +36,7 @@ export default function TermosECondicoes() {
             <p>2. usar os materiais para qualquer finalidade comercial ou para exibição pública (comercial ou não comercial) sem a nossa autorização prévia e por escrito;</p>
             <p>3. tentar descompilar ou fazer engenharia reversa de qualquer software contido no site;</p>
             <p>4. remover quaisquer direitos autorais ou outras notações de propriedade dos materiais; ou</p>
-            <p>5. transferir os materiais para outra pessoa ou 'espelhar' os materiais em qualquer outro servidor.</p>
+            <p>5. transferir os materiais para outra pessoa ou &apos;espelhar&apos; os materiais em qualquer outro servidor.</p>
             <p>
               Esta licença será automaticamente rescindida se você violar alguma dessas restrições e poderá ser
               rescindida por UX CODERS TECNOLOGIA E DESIGN LTDA a qualquer momento.
@@ -46,7 +46,7 @@ export default function TermosECondicoes() {
           <section className="space-y-3">
             <h2 className="text-2xl font-semibold">3. Isenção de Responsabilidade</h2>
             <p>
-              Os materiais no site da UX CODERS TECNOLOGIA E DESIGN LTDA são fornecidos 'como estão'. UX CODERS
+              Os materiais no site da UX CODERS TECNOLOGIA E DESIGN LTDA são fornecidos &apos;como estão&apos;. UX CODERS
               TECNOLOGIA E DESIGN LTDA não oferece garantias, expressas ou implícitas, e, por este meio, isenta e nega
               todas as outras garantias, incluindo, sem limitação, garantias implícitas ou condições de comercialização,
               adequação a um fim específico ou não violação de propriedade intelectual ou outra violação de direitos.

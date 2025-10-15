@@ -8,13 +8,12 @@ export default function CookieConsentModal() {
 
   useEffect(() => {
     try {
-      const consent = localStorage.getItem("cookie_consent");
-      if (consent === null) {
-        setShowModal(true);
-      }
+      // Consentimento obrigatório: manter como 'aceito' e não exibir modal
+      localStorage.setItem("cookie_consent", "aceito");
+      setShowModal(false);
     } catch (err) {
-      // Em ambientes onde localStorage não está disponível, mostramos o modal por segurança.
-      setShowModal(true);
+      // Se localStorage não estiver disponível, apenas ocultamos o modal
+      setShowModal(false);
     }
   }, []);
 
@@ -63,12 +62,6 @@ export default function CookieConsentModal() {
           >
             Recusar
           </button>
-          <Link
-            href="/politica-de-privacidade"
-            className="px-4 py-2 rounded-md border border-gray-300 text-gray-800 hover:bg-gray-100"
-          >
-            Personalizar
-          </Link>
           <button
             type="button"
             onClick={handleAccept}
