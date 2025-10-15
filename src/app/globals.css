@@ -193,6 +193,52 @@ body {
   letter-spacing: 0.01em;
 }
 
+/* Botão CTA em pastilha com ícone circular à direita */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background-color: #152020; /* preto destaque usado no menu */
+  color: #ffffff;
+  font-weight: 600;
+  padding: 12px 12px 12px 20px; /* mais espaço à esquerda para o texto */
+  border-radius: 9999px; /* pill */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: background-color 240ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+
+.cta-button:hover {
+  background-color: #3B146F; /* roxo um pouco mais escuro */
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+.cta-button:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.cta-button .cta-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  color: #152020;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 200ms ease;
+}
+
+.cta-button:hover .cta-icon {
+  transform: translateX(1.5px);
+}
+
+.cta-button.is-disabled,
+.cta-button[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
 @media (min-width: 640px) {
   .carousel-item {
     flex-basis: 50%;
@@ -221,4 +267,29 @@ body {
     animation: none;
     transform: none;
   }
+}
+
+/* Ícones do rodapé: base cinza e hover roxo escuro */
+.footer-social-link {
+  color: inherit; /* herda text-gray-300 do footer */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 240ms ease, transform 200ms ease, filter 240ms ease;
+}
+
+.social-icon {
+  color: inherit;
+  transition: color 240ms ease;
+}
+
+.footer-social-link:hover .social-icon {
+  color: #3B146F; /* roxo escuro igual ao hover do CTA */
+  filter: drop-shadow(0 0 6px rgba(59, 20, 111, 0.45));
+}
+
+.footer-social-link:focus-visible {
+  outline: 2px solid #3B146F;
+  outline-offset: 3px;
+  border-radius: 8px;
 }

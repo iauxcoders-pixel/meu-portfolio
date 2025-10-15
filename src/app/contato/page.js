@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { FiArrowRight } from "react-icons/fi";
 
 export default function PaginaContacto() {
   const [consent, setConsent] = useState(false);
@@ -85,14 +86,17 @@ export default function PaginaContacto() {
               </div>
             </div>
 
-            {/* Botão WhatsApp */}
+            {/* Botão WhatsApp (CTA estilo pastilha) */}
             <a
               href="https://wa.me/5545999839859"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block mt-8 bg-green-600 hover:bg-green-500 text-white font-semibold py-3 px-6 rounded-lg shadow-lg"
+              className="cta-button mt-8"
             >
-              Chamar no WhatsApp
+              <span className="cta-label">Chamar no WhatsApp</span>
+              <span className="cta-icon" aria-hidden="true">
+                <FiArrowRight size={18} />
+              </span>
             </a>
           </div>
 
@@ -156,9 +160,12 @@ export default function PaginaContacto() {
               <button
                 type="submit"
                 disabled={!consent}
-                className={`bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 px-6 rounded-lg shadow-lg ${!consent ? "opacity-50 cursor-not-allowed" : ""}`}
+                className={`cta-button ${!consent ? "is-disabled" : ""}`}
               >
-                Enviar Mensagem
+                <span className="cta-label">Enviar Mensagem</span>
+                <span className="cta-icon" aria-hidden="true">
+                  <FiArrowRight size={18} />
+                </span>
               </button>
             </form>
           </div>

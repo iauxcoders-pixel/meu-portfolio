@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import Link from "next/link";
+import { TypeAnimation } from "react-type-animation";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,7 +17,12 @@ export default function Navbar() {
               Sobre
             </Link>
             <Link href="/" className="bg-[#152020] text-white rounded-full px-6 py-2 lg:mx-16 md:mx-8 mx-4">
-              O Designer João
+              <TypeAnimation
+                sequence={["O Designer João", 2000, "Criatividade", 2000, "UX Coders", 2000, "Negócios & Futuro", 2000]}
+                wrapper="span"
+                speed={50}
+                repeat={Infinity}
+              />
             </Link>
             <Link href="/contato" className="px-8 py-2">
               Contato

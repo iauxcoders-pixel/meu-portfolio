@@ -97,9 +97,9 @@ export default function ProjectCard({ projeto = {} }) {
             <Image
               src={imagem_url}
               alt={titulo || "Thumbnail do vídeo"}
-              width={640}
-              height={360}
-              className="object-contain w-full h-full block"
+              fill
+              style={{ objectFit: "cover" }}
+              className="w-full h-full block"
               sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw"
             />
             <span className="absolute inset-0 grid place-items-center" aria-hidden="true">

@@ -84,7 +84,8 @@ export default function VideoCard({ video = {} }) {
               src={thumb}
               alt={titulo || "Thumbnail do vídeo"}
               fill
-              className="object-contain w-full h-full block"
+              style={{ objectFit: "cover" }}
+              className="w-full h-full block"
               sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw"
             />
           ) : (

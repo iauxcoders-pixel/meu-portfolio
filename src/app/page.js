@@ -3,6 +3,8 @@ import Image from "next/image";
 import HeroSection from "@/components/HeroSection";
 import ProjectCard from "@/components/ProjectCard";
 import VideoCard from "@/components/VideoCard";
+import { FiArrowRight } from "react-icons/fi";
+import VideosCarousel from "@/components/VideosCarousel";
 
 export const metadata = {
   verification: {
@@ -98,13 +100,29 @@ export default async function Home() {
       {/* Secção de vídeos em destaque */}
       <h2 className="section-title">Animações de Alto Impacto</h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {uniqueVideos.map((video, idx) => (
-          <VideoCard
-            key={normalizeUrl(video?.thumbnail_url || video?.imagem_url) || video?.id || idx}
-            video={{ ...video, thumbnail_url: video.thumbnail_url || video.imagem_url }}
-          />
-        ))}
+      <div className="full-site-width">
+        <VideosCarousel
+          items={(uniqueVideos || []).map((video) => ({
+            ...video,
+            thumbnail_url: video?.thumbnail_url || video?.imagem_url,
+          }))}
+        />
+      </div>
+
+      {/* CTA WhatsApp abaixo da seção de vídeos */}
+      <div className="py-[60px] text-center">
+        <a
+          href="https://wa.me/5545999839859"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="cta-button"
+          aria-label="Chamar no WhatsApp"
+        >
+          <span className="cta-label">Chamar no WhatsApp</span>
+          <span className="cta-icon" aria-hidden="true">
+            <FiArrowRight size={18} />
+          </span>
+        </a>
       </div>
     </main>
   );

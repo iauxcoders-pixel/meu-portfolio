@@ -10,28 +10,28 @@ export default function Footer() {
             href="https://instagram.com/odesignerjoao.ia"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white"
+            className="footer-social-link"
             aria-label="Instagram"
           >
-            <FaInstagram className="text-2xl" />
+            <FaInstagram className="social-icon text-2xl" />
           </a>
           <a
             href="https://www.linkedin.com/in/jo%C3%A3o-paulo-ceo/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white"
+            className="footer-social-link"
             aria-label="LinkedIn"
           >
-            <FaLinkedin className="text-2xl" />
+            <FaLinkedin className="social-icon text-2xl" />
           </a>
           <a
             href="https://wa.me/5545999839859"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white"
+            className="footer-social-link"
             aria-label="WhatsApp"
           >
-            <FaWhatsapp className="text-2xl" />
+            <FaWhatsapp className="social-icon text-2xl" />
           </a>
         </div>
 
