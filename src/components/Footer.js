@@ -1,4 +1,5 @@
 import { FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -41,6 +42,15 @@ export default function Footer() {
         {/* Informações legais */}
         <p className="text-sm text-gray-500">
           UX CODERS TECNOLOGIA E DESIGN LTDA . © 2025 . CNPJ 62.832.636/0001-57
+        </p>
+        <p className="text-sm text-gray-500">
+          <Link href="/politica-de-privacidade" className="hover:underline">
+            Política de Privacidade
+          </Link>
+          <span className="mx-2" aria-hidden="true">•</span>
+          <Link href="/termos-e-condicoes" className="hover:underline">
+            Termos de Uso
+          </Link>
         </p>
       </div>
     </footer>
