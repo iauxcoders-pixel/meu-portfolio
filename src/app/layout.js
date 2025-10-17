@@ -28,7 +28,9 @@ export default function RootLayout({ children }) {
         <TrackingScripts />
         <div className="mx-auto w-full max-w-[1440px]">
           <Navbar />
-          {children}
+          <div className="pt-12">
+            {children}
+          </div>
         </div>
         <Footer />
       </body>
