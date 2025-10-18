@@ -4,7 +4,7 @@ import PostCard from "@/components/PostCard";
 export default async function BlogPage() {
   const { data: posts, error } = await supabase
     .from("posts")
-    .select("*, autores(nome), categorias(nome)")
+    .select("*, alt_text_capa, autores(nome), categorias(nome)")
     .eq("status", "publicado")
     .order("created_at", { ascending: false });
 

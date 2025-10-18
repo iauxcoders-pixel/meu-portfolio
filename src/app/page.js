@@ -13,8 +13,8 @@ export const metadata = {
 };
 
 export default async function Home() {
-  const { data, error } = await supabase.from("projetos").select("*");
-  const { data: videos, error: videosError } = await supabase.from("projeto videos").select("*");
+  const { data, error } = await supabase.from("projetos").select("*, alt_text_imagem");
+  const { data: videos, error: videosError } = await supabase.from("projeto videos").select("*, alt_text_thumbnail");
 
   // Util para normalizar URLs (remove query params, barras finais e padroniza case)
   const normalizeUrl = (u) => {

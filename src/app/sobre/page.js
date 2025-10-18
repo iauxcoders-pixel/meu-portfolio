@@ -101,7 +101,7 @@ Em todas essas experiências, meu grande diferencial foi o suporte ao design vis
 
   return (
     <main className="min-h-screen p-0">
-      <section ref={sectionRef}>
+      <section ref={sectionRef} aria-labelledby="sobre-titulo" aria-describedby="sobre-subtitulo">
         {/* Contentor sticky alinhado ao topo */}
         <div className="sticky top-0 h-screen flex items-start justify-center">
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-start pt-[120px]">
@@ -109,12 +109,12 @@ Em todas essas experiências, meu grande diferencial foi o suporte ao design vis
             <div className="text-left">
               {/* Div 1: H1 e P fixos */}
               <div className="space-y-2">
-                <h1 ref={titleRef} className="text-4xl font-bold">João Paulo Schausteck</h1>
-                <p ref={subtitleRef} className="text-white/80">Designer Gráfico & Digital | UX/UI Designer</p>
+                <h1 id="sobre-titulo" ref={titleRef} className="text-4xl font-bold">João Paulo Schausteck</h1>
+                <p id="sobre-subtitulo" ref={subtitleRef} className="text-white/80">CEO UX Coders | Designer Gráfico & Digital | UX/UI Designer</p>
               </div>
 
               {/* Div 2: Bloco dinâmico do sticky */}
-              <div ref={contentRef} className="mt-[60px] space-y-2">
+              <div ref={contentRef} className="mt-[60px] space-y-2" aria-live="polite">
                 <h2 className="text-2xl font-semibold">{slides[activeSlide].title}</h2>
                 <p className="text-white/80 whitespace-pre-line">{slides[activeSlide].description}</p>
               </div>

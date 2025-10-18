@@ -63,8 +63,8 @@ function toEmbedUrl(raw) {
 }
 
 export default function VideoCard({ video = {} }) {
-  const { video_url, thumbnail_url, imagem_url, titulo } = video || {};
-  const thumb = thumbnail_url || imagem_url;
+  const { video_url, thumbnail_url, titulo } = video || {};
+  const thumb = thumbnail_url;
   const [isPlaying, setIsPlaying] = useState(false);
 
   const iframeSrc = useMemo(() => toEmbedUrl(video_url), [video_url]);
@@ -75,17 +75,16 @@ export default function VideoCard({ video = {} }) {
         <button
           type="button"
           onClick={() => setIsPlaying(true)}
-          aria-label="Reproduzir vídeo"
+          aria-label={`Tocar vídeo: ${video.titulo}`}
           className="relative w-full cursor-pointer group"
           style={{ aspectRatio: "9/16" }}
         >
           {thumb ? (
             <Image
               src={thumb}
-              alt={titulo || "Thumbnail do vídeo"}
+              alt={video.alt_text_thumbnail || video.titulo}
               fill
-              style={{ objectFit: "cover" }}
-              className="w-full h-full block"
+              className="absolute inset-0 object-cover w-full h-full"
               sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw"
             />
           ) : (
@@ -93,7 +92,7 @@ export default function VideoCard({ video = {} }) {
           )}
           <span className="absolute inset-0 grid place-items-center" aria-hidden="true">
             <span className="bg-black/40 group-hover:bg-black/50 transition-colors rounded-full p-6">
-              <FaPlay className="text-white text-3xl" />
+              <FaPlay className="text-white text-3xl" aria-hidden="true" />
             </span>
           </span>
         </button>

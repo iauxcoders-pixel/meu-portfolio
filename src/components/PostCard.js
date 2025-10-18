@@ -14,12 +14,13 @@ export default function PostCard({ post }) {
   return (
     <Link
       href={href}
+      aria-label={`Ler post: ${post.titulo}`}
       className="group block overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-200 border border-white/10 bg-white/5"
     >
       {hasCover && (
         <Image
           src={coverUrl}
-          alt={title}
+          alt={post.alt_text_capa || post.titulo}
           width={1200}
           height={675}
           className="w-full h-56 sm:h-64 object-cover"

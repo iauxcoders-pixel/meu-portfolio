@@ -90,13 +90,13 @@ export default function ProjectCard({ projeto = {} }) {
           <button
             type="button"
             onClick={() => setIsPlaying(true)}
-            aria-label="Reproduzir vídeo"
+            aria-label={`Abrir projeto: ${projeto.titulo}`}
             className="relative w-full group"
             style={{ aspectRatio: "16/9" }}
           >
             <Image
               src={imagem_url}
-              alt={titulo || "Thumbnail do vídeo"}
+              alt={projeto.alt_text_imagem || projeto.titulo}
               fill
               style={{ objectFit: "cover" }}
               className="w-full h-full block"
@@ -120,7 +120,7 @@ export default function ProjectCard({ projeto = {} }) {
       {imagem_url ? (
         <Image
           src={imagem_url}
-          alt={titulo || "Projeto"}
+          alt={projeto.alt_text_imagem || projeto.titulo}
           width={500}
           height={300}
           className="object-contain w-full h-auto block"

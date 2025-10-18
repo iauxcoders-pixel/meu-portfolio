@@ -21,7 +21,7 @@ export default function ProjectsCarousel({ items = [] }) {
               {p.imagem_url ? (
                 <Image
                   src={p.imagem_url}
-                  alt={p.titulo || "Projeto"}
+                  alt={p.alt_text_imagem || p.titulo || "Projeto"}
                   width={500}
                   height={300}
                   className="object-contain w-full h-auto block"

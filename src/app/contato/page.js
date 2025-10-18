@@ -136,6 +136,7 @@ export default function PaginaContacto() {
               target="_blank"
               rel="noopener noreferrer"
               className="cta-button mt-8"
+              aria-label="Chamar no WhatsApp"
             >
               <span className="cta-label">Chamar no WhatsApp</span>
               <span className="cta-icon" aria-hidden="true">

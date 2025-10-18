@@ -7,7 +7,7 @@ export async function generateMetadata({ params }) {
   try {
     const { data: post, error } = await supabase
       .from("posts")
-      .select("titulo, resumo")
+      .select("titulo, resumo, alt_text_capa")
       .eq("slug", slug)
       .single();
 
@@ -29,8 +29,8 @@ export default async function BlogPostPage({ params }) {
 
   const { data: post, error } = await supabase
     .from("posts")
-    .select("*, autores(nome), categorias(nome)")
-    .eq("slug", slug)
+    .select("*, alt_text_capa, autores(nome), categorias(nome)")
+    .eq("slug", params.slug)
     .single();
 
   if (error || !post) {
@@ -72,7 +72,7 @@ export default async function BlogPostPage({ params }) {
         {hasCover && (
           <Image
             src={coverUrl}
-            alt={post.titulo}
+            alt={post.alt_text_capa || post.titulo}
             width={1600}
             height={900}
             className="w-full rounded-xl mb-8 object-cover"
