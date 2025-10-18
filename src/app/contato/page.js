@@ -135,7 +135,7 @@ export default function PaginaContacto() {
               href="https://wa.me/5545999839859"
               target="_blank"
               rel="noopener noreferrer"
-              className="cta-button mt-8"
+              className="mt-8 inline-flex items-center gap-2 bg-white text-black font-semibold px-4 py-2 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
               aria-label="Chamar no WhatsApp"
             >
               <span className="cta-label">Chamar no WhatsApp</span>
@@ -157,7 +157,7 @@ export default function PaginaContacto() {
                   type="text"
                   value={nome}
                   onChange={(e) => setNome(e.target.value)}
-                  className="w-full rounded-md border border-white/10 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-400 bg-white text-black px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
 
@@ -170,7 +170,7 @@ export default function PaginaContacto() {
                   type="text"
                   value={whatsapp}
                   onChange={(e) => setWhatsapp(e.target.value)}
-                  className="w-full rounded-md border border-white/10 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-400 bg-white text-black px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
 
@@ -183,7 +183,7 @@ export default function PaginaContacto() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full rounded-md border border-white/10 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-400 bg-white text-black px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
 
@@ -195,7 +195,7 @@ export default function PaginaContacto() {
                 name="servico"
                 value={servico}
                 onChange={(e) => setServico(e.target.value)}
-                className="w-full rounded-md border border-white/10 bg-transparent text-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full rounded-md border border-gray-400 bg-white text-black px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="Design" style={{ backgroundColor: "#ffffff", color: "#152020" }}>Design</option>
                 <option value="Social Media" style={{ backgroundColor: "#ffffff", color: "#152020" }}>Social Media</option>
@@ -215,7 +215,7 @@ export default function PaginaContacto() {
                   rows={6}
                   value={descricao}
                   onChange={(e) => setDescricao(e.target.value)}
-                  className="w-full rounded-md border border-white/10 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-400 bg-white text-black px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
 
@@ -239,7 +239,7 @@ export default function PaginaContacto() {
               <button
                 type="submit"
                 disabled={!consentimento || loading}
-                className={`cta-button ${!consentimento || loading ? "is-disabled" : ""}`}
+                className={`inline-flex items-center gap-2 bg-white text-black font-semibold px-4 py-2 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 ${!consentimento || loading ? "opacity-60 cursor-not-allowed" : ""}`}
               >
                 <span className="cta-label">{loading ? "Enviando..." : "Enviar Mensagem"}</span>
                 <span className="cta-icon" aria-hidden="true">

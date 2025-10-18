@@ -41,7 +41,9 @@ export default function Navbar() {
             type="button"
             className="md:hidden p-2 rounded-full hover:bg-white/60"
             onClick={() => setIsMenuOpen((prev) => !prev)}
-            aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-label={isMenuOpen ? "Fechar menu de navegação" : "Abrir menu de navegação"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu-panel"
           >
             {isMenuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
           </button>
@@ -50,7 +52,7 @@ export default function Navbar() {
 
       {/* Painel do Menu Móvel */}
       {isMenuOpen && (
-        <div className="fixed inset-0 bg-black/90 backdrop-blur-sm flex flex-col items-center justify-center gap-8 z-40">
+        <div id="mobile-menu-panel" className="fixed inset-0 bg-black/90 backdrop-blur-sm flex flex-col items-center justify-center gap-8 z-40">
           <Link href="/design" className="text-3xl text-white" onClick={() => setIsMenuOpen(false)}>
             Design
           </Link>

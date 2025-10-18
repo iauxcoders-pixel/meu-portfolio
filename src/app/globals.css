@@ -293,3 +293,39 @@ body {
   outline-offset: 3px;
   border-radius: 8px;
 }
+
+/* Acessibilidade: Modos globais */
+
+/* Modo de Alto Contraste */
+body.high-contrast {
+  filter: contrast(175%);
+}
+
+/* Modo Monocromático (Tons de Cinza) */
+body.grayscale {
+  filter: grayscale(100%);
+}
+
+/* Modo de Sublinhar Links */
+/* Sublinha todos os links que não estão dentro de um botão ou de um cartão já óbvio */
+body.underline-links a:not([class="button"]),
+body.underline-links a:not([class*="card"]) {
+  text-decoration: underline !important;
+}
+
+/* Configuração de Tamanho de Fonte para Acessibilidade */
+/* O padrão (font-normal) usa o tamanho base do navegador */
+body.font-large {
+  /* 18px, se o padrão for 16px. Aumenta tudo em 12.5% */
+  font-size: 112.5%;
+}
+
+body.font-xlarge {
+  /* 20px, se o padrão for 16px. Aumenta tudo em 25% */
+  font-size: 125%;
+}
+/* Sublinha todos os links que não estão dentro de um botão ou de um cartão já óbvio */
+body.underline-links a:not([class="button"]),
+body.underline-links a:not([class*="card"]) {
+  text-decoration: underline !important;
+}

@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CookieConsentModal from "@/components/CookieConsentModal";
 import TrackingScripts from "@/components/TrackingScripts";
+import AccessibilityWidget from "@/components/AccessibilityWidget";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +33,7 @@ export default function RootLayout({ children }) {
             {children}
           </main>
         </div>
+        <AccessibilityWidget />
         <Footer />
       </body>
     </html>
