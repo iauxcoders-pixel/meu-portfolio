@@ -3,17 +3,18 @@
 import { useEffect, useState } from "react";
 import { FaUniversalAccess } from "react-icons/fa";
 
+// Constantes estáveis fora do componente para evitar warnings de exhaustive-deps
+const FONT_SIZES = ["font-normal", "font-large", "font-xlarge"];
+const MODE_CONFIG = {
+  highContrast: { key: "accessibility_high_contrast", className: "high-contrast" },
+  grayscale: { key: "accessibility_grayscale", className: "grayscale" },
+  underlineLinks: { key: "accessibility_underline_links", className: "underline-links" },
+};
+
 export default function AccessibilityWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const fontSizes = ['font-normal', 'font-large', 'font-xlarge'];
   const [fontSize, setFontSize] = useState('font-normal');
   const [modes, setModes] = useState({ highContrast: false, grayscale: false, underlineLinks: false });
-
-  const MODE_CONFIG = {
-    highContrast: { key: "accessibility_high_contrast", className: "high-contrast" },
-    grayscale: { key: "accessibility_grayscale", className: "grayscale" },
-    underlineLinks: { key: "accessibility_underline_links", className: "underline-links" },
-  };
 
   useEffect(() => {
     const initial = { highContrast: false, grayscale: false, underlineLinks: false };
@@ -33,9 +34,9 @@ export default function AccessibilityWidget() {
     // Load font size preference and apply class on body
     try {
       const storedSize = localStorage.getItem('accessibility_font_size');
-      const newSize = fontSizes.includes(storedSize) ? storedSize : 'font-normal';
+      const newSize = FONT_SIZES.includes(storedSize) ? storedSize : 'font-normal';
       setFontSize(newSize);
-      fontSizes.forEach((cls) => document.body.classList.remove(cls));
+      FONT_SIZES.forEach((cls) => document.body.classList.remove(cls));
       document.body.classList.add(newSize);
     } catch (e) {
       // ignore localStorage errors
@@ -59,15 +60,15 @@ export default function AccessibilityWidget() {
 
   function handleCycleFontSize() {
     setFontSize((prev) => {
-      const currentIndex = fontSizes.indexOf(prev);
-      const nextIndex = (currentIndex + 1) % fontSizes.length;
-      const newSizeClass = fontSizes[nextIndex];
+      const currentIndex = FONT_SIZES.indexOf(prev);
+      const nextIndex = (currentIndex + 1) % FONT_SIZES.length;
+      const newSizeClass = FONT_SIZES[nextIndex];
       try {
         localStorage.setItem('accessibility_font_size', newSizeClass);
       } catch (e) {
         // ignore localStorage errors
       }
-      fontSizes.forEach((cls) => document.body.classList.remove(cls));
+      FONT_SIZES.forEach((cls) => document.body.classList.remove(cls));
       document.body.classList.add(newSizeClass);
       return newSizeClass;
     });

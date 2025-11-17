@@ -4,9 +4,7 @@ import Image from "next/image";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 export default function ProjectsCarousel({ items = [] }) {
-  if (!items || items.length === 0) {
-    return null;
-  }
+  // Não retornar antes dos hooks para evitar hooks condicionais
 
   const doubled = useMemo(() => [...items, ...items], [items]);
 
@@ -50,6 +48,11 @@ export default function ProjectsCarousel({ items = [] }) {
     setInteracting(true);
     setOffset((prev) => normalizeOffset(prev + step));
   };
+
+  // Após declarar todos os hooks, é seguro condicionar a renderização
+  if (!items || items.length === 0) {
+    return null;
+  }
 
   return (
     <div className="relative">
