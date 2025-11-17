@@ -22,7 +22,13 @@ export default function Navbar() {
             </Link>
             <Link href="/" className="bg-[#152020] text-white rounded-full px-8 py-2">
               <TypeAnimation
-                sequence={["O Designer João", 2000, "Criatividade", 2000, "UX Coders", 2000, "Negócios & Futuro", 2000]}
+                sequence={[
+                  "O Designer João", 2000,
+                  "Criatividade", 2000,
+                  "UX Coders", 2000,
+                  "Negócios & Futuro", 2000,
+                  "Estúdio Usteck", 2000,
+                ]}
                 wrapper="span"
                 speed={50}
                 repeat={Infinity}

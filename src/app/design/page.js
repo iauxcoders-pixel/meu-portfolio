@@ -1,6 +1,7 @@
 import { supabase } from "@/lib/supabaseClient";
 import Image from "next/image";
 import ProjectCard from "@/components/ProjectCard";
+import ProjectsCarousel from "@/components/ProjectsCarousel";
 import VideoCard from "@/components/VideoCard";
 import { FiArrowRight } from "react-icons/fi";
 import VideosCarousel from "@/components/VideosCarousel";
@@ -72,20 +73,7 @@ export default async function Design() {
       {/* Hero removido nesta página para evitar espaço vazio */}
       <h2 className="section-title">Design de Alto Padrão</h2>
       <div className="full-site-width">
-        {(() => {
-          const items = projectsForCarousel || [];
-          return (
-            <div className="carousel-container">
-              <div className="carousel-track">
-                {items.map((p, i) => (
-                  <div key={p.id ?? i} className="carousel-item">
-                    <ProjectCard projeto={p} />
-                  </div>
-                ))}
-              </div>
-            </div>
-          );
-        })()}
+        <ProjectsCarousel items={projectsForCarousel || []} />
       </div>
 
       <h2 className="section-title">Animações de Alto Impacto</h2>
